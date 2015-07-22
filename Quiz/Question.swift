@@ -10,7 +10,7 @@ import UIKit
 
 class Question: NSObject {
    
-    var qustionText:String = ""
+    var questionText:String = ""
     var answers:[String] = [String]()
     var correctAnswerIndex:Int = 0
     var module:Int = 0
