@@ -16,14 +16,50 @@ class ViewController: UIViewController {
     
     
     let model:QuizModel = QuizModel()
-    var question:[Question] = [Question]()
+    var questions:[Question] = [Question]()
+    
+    var currentQuestion:Question?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         // Get the questions from the quiz model
-        self.question = self.model.getQuestions()
+        self.questions = self.model.getQuestions()
+        
+        // Check if there's at least 1 question
+        if(self.questions.count > 0){
+            
+            // Set the current question to first question
+            self.currentQuestion = self.questions[0]
+            
+            // Call the display question method
+            self.displayCurrentQuestion()
+            
+        }
+        
+        func displayCurrentQuestion(){
+            
+            if let actualCurrentQuestion = self.currentQuestion {
+                
+                // Update the question text
+                self.questionlabel.text = self.currentQuestion?.questionText
+                
+                // Update the module and lesson label
+                self.moduleLabel.text = String(format: "Module %i Lesson %i", self.currentQuestion!.module, self.currentQuestion!.lesson)
+                
+                // Create and display the answer button views
+                self.createAnswerButtons()
+            }
+            
+           
+        }
+        
+        func createAnswerButtons() {
+            
+            
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {
