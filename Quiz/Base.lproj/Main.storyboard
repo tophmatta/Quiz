@@ -20,7 +20,6 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YHR-ZW-QHD">
                                 <subviews>
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tW3-Uz-8Jv" userLabel="ContentView">
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <variation key="heightClass=compact" ambiguous="YES">
                                             <rect key="frame" x="0.0" y="0.0" width="0.0" height="0.0"/>
                                         </variation>
@@ -30,6 +29,7 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="tW3-Uz-8Jv" secondAttribute="trailing" id="Lf0-E2-U3R"/>
                                     <constraint firstAttribute="bottom" secondItem="tW3-Uz-8Jv" secondAttribute="bottom" id="Lri-6D-cRU"/>
+                                    <constraint firstItem="tW3-Uz-8Jv" firstAttribute="width" secondItem="YHR-ZW-QHD" secondAttribute="width" id="Npm-j5-LMe"/>
                                     <constraint firstItem="tW3-Uz-8Jv" firstAttribute="leading" secondItem="YHR-ZW-QHD" secondAttribute="leading" id="TpC-8z-Zdd"/>
                                     <constraint firstItem="tW3-Uz-8Jv" firstAttribute="top" secondItem="YHR-ZW-QHD" secondAttribute="top" id="xle-xg-JiD"/>
                                 </constraints>
@@ -46,13 +46,13 @@
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SJy-kk-oXC" userLabel="QuestionView">
                                 <rect key="frame" x="-20" y="0.0" width="176" height="21"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="A sample question" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JMd-Sh-gIz">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="A sample question" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JMd-Sh-gIz">
                                         <rect key="frame" x="20" y="0.0" width="136" height="21"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Module: 4 Lesson: 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKh-Ia-dZE">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Module: 4 Lesson: 1" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKh-Ia-dZE">
                                         <rect key="frame" x="5" y="0.0" width="166" height="16"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
