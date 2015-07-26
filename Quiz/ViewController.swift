@@ -149,6 +149,50 @@ class ViewController: UIViewController {
         }
     }
 
+    @IBAction func changeQuestion(sender: UIButton) {
+        
+        // Dismiss dim and result view
+        self.dimView.alpha = 0
+        self.resultView.alpha = 0
+        
+        // Erase the question and module labels
+        self.questionlabel.text = ""
+        self.moduleLabel.text = ""
+        
+        // Remove all the answerbuttonviews
+        for button in self.answerButtonArray {
+            button.removeFromSuperview()
+        }
+        
+        // Flush button array (changes to 0 capacity array with nothing)
+        self.answerButtonArray.removeAll(keepCapacity: false)
+        
+        // Finding current index of question
+        let indexOfCurrentQuestion:Int? = find(self.questions, self.currentQuestion!)
+        
+        // Check if it found the current index
+        if let actualCurrentIndex = indexOfCurrentQuestion {
+            
+            // Found the index! Advance the index
+            let nextQuestionIndex = actualCurrentIndex + 1
+            
+            // Check if nextQuestionIndex is beyond the capacity of our questions array
+            if (nextQuestionIndex < self.questions.count) {
+                
+                // We can display another question
+                self.currentQuestion = self.questions[nextQuestionIndex]
+                self.displayCurrentQuestion()
+            }
+            else {
+                
+                // No more questions to display
+            }
+            
+            
+        }
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

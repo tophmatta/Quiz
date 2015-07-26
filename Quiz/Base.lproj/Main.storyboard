@@ -20,7 +20,6 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YHR-ZW-QHD">
                                 <subviews>
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tW3-Uz-8Jv" userLabel="ContentView">
-                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <variation key="heightClass=compact" ambiguous="YES">
                                             <rect key="frame" x="0.0" y="0.0" width="0.0" height="0.0"/>
                                         </variation>
@@ -100,9 +99,12 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="changeQuestion:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="kSE-qR-apZ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="0.90000000000000002" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="XC0-r5-7Q7" secondAttribute="trailing" id="0Um-m4-EMn"/>
                                     <constraint firstItem="pSK-LO-bWN" firstAttribute="leading" secondItem="IQM-4j-ekC" secondAttribute="leading" id="6KR-me-MYR"/>
@@ -146,14 +148,6 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="Gfx-dh-lla"/>
-                                <exclude reference="LOh-Me-Bkp"/>
-                                <exclude reference="Lbg-kJ-kbx"/>
-                                <exclude reference="OlF-Ej-AEN"/>
-                                <exclude reference="OyO-Nb-d32"/>
-                                <exclude reference="g7c-Lm-h9R"/>
-                                <exclude reference="kSs-HC-1Cf"/>
-                                <exclude reference="xsZ-mE-oI6"/>
                                 <exclude reference="IRW-HU-h4t"/>
                                 <exclude reference="MSJ-Rv-Mbv"/>
                                 <exclude reference="YNO-uG-zVZ"/>
@@ -162,30 +156,38 @@
                                 <exclude reference="lWW-KP-AtJ"/>
                                 <exclude reference="ppw-Bu-p3w"/>
                                 <exclude reference="ylU-0n-aCj"/>
+                                <exclude reference="Gfx-dh-lla"/>
+                                <exclude reference="LOh-Me-Bkp"/>
+                                <exclude reference="Lbg-kJ-kbx"/>
+                                <exclude reference="OlF-Ej-AEN"/>
+                                <exclude reference="OyO-Nb-d32"/>
+                                <exclude reference="g7c-Lm-h9R"/>
+                                <exclude reference="kSs-HC-1Cf"/>
+                                <exclude reference="xsZ-mE-oI6"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
                             <mask key="constraints">
-                                <include reference="Gfx-dh-lla"/>
-                                <include reference="LOh-Me-Bkp"/>
-                                <include reference="OyO-Nb-d32"/>
-                                <include reference="g7c-Lm-h9R"/>
                                 <include reference="IRW-HU-h4t"/>
                                 <include reference="Ygt-qO-Hu6"/>
                                 <include reference="dHa-uD-SxT"/>
                                 <include reference="ylU-0n-aCj"/>
+                                <include reference="Gfx-dh-lla"/>
+                                <include reference="LOh-Me-Bkp"/>
+                                <include reference="OyO-Nb-d32"/>
+                                <include reference="g7c-Lm-h9R"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
-                                <include reference="Lbg-kJ-kbx"/>
-                                <include reference="OlF-Ej-AEN"/>
-                                <include reference="kSs-HC-1Cf"/>
-                                <include reference="xsZ-mE-oI6"/>
                                 <include reference="MSJ-Rv-Mbv"/>
                                 <include reference="YNO-uG-zVZ"/>
                                 <include reference="lWW-KP-AtJ"/>
                                 <include reference="ppw-Bu-p3w"/>
+                                <include reference="Lbg-kJ-kbx"/>
+                                <include reference="OlF-Ej-AEN"/>
+                                <include reference="kSs-HC-1Cf"/>
+                                <include reference="xsZ-mE-oI6"/>
                             </mask>
                         </variation>
                     </view>
