@@ -105,9 +105,9 @@ class ViewController: UIViewController {
             let heightConstraint:NSLayoutConstraint = NSLayoutConstraint(item: answer, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 100)
             answer.addConstraint(heightConstraint)
             
-            let leftMarginConstraint:NSLayoutConstraint = NSLayoutConstraint(item: answer, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.scrollViewContentView, attribute: NSLayoutAttribute.Left, multiplier: 1, constant: 0)
+            let leftMarginConstraint:NSLayoutConstraint = NSLayoutConstraint(item: answer, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.scrollViewContentView, attribute: NSLayoutAttribute.Left, multiplier: 1, constant: 400)
             
-            let rightMarginConstraint:NSLayoutConstraint = NSLayoutConstraint(item: answer, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.scrollViewContentView, attribute: NSLayoutAttribute.Right, multiplier: 1, constant: 0)
+            let rightMarginConstraint:NSLayoutConstraint = NSLayoutConstraint(item: answer, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.scrollViewContentView, attribute: NSLayoutAttribute.Right, multiplier: 1, constant: 400)
             
             let topMarginConstraint:NSLayoutConstraint = NSLayoutConstraint(item: answer, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.scrollViewContentView, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: CGFloat(101 * index))
             
@@ -122,6 +122,22 @@ class ViewController: UIViewController {
             
             // Add it to the button array
             self.answerButtonArray.append(answer)
+            
+            // Manually call update layout
+            self.view.layoutIfNeeded()
+            
+            // Calcualte slide in delay
+            let slideInDelay:Double = Double(index) * 0.1
+            
+            // Animate the button constraints so they slide in
+            UIView.animateWithDuration(0.5, delay: slideInDelay, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+                
+                leftMarginConstraint.constant = 0
+                rightMarginConstraint.constant = 0
+                self.view.layoutIfNeeded()
+                
+                
+                }, completion: nil)
         }
         
         // Adjust the height of the content view so it can scroll if need be
@@ -250,6 +266,9 @@ class ViewController: UIViewController {
             else {
                 
                 // No more questions to display. End the quiz
+                self.resultView.backgroundColor = UIColor(red: 85/255, green: 85/255, blue: 85/255, alpha: 0.8)
+                self.nextButton.backgroundColor = UIColor.darkGrayColor()
+                
                 self.resultTitleLabel.text = "Quiz Finished"
                 self.feedbackLabel.text = String(format: "Your Score: %i / %i", self.numberCorrect, self.questions.count)
                 self.nextButton.setTitle("Restart", forState: UIControlState.Normal)
