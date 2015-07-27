@@ -21,12 +21,16 @@ class ViewController: UIViewController {
     var currentQuestion:Question?
     var answerButtonArray:[AnswerButtonView] = [AnswerButtonView]()
     
+    // Score Keeping
+    var numberCorrect:Int = 0
+    
     // Result view IBOutlet properties
     @IBOutlet weak var resultTitleLabel: UILabel!
     @IBOutlet weak var feedbackLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var resultView: UIView!
     @IBOutlet weak var dimView: UIView!
+    @IBOutlet weak var resultViewTopMargin: NSLayoutConstraint!
     
 
     override func viewDidLoad() {
@@ -57,11 +61,24 @@ class ViewController: UIViewController {
         
         if let actualCurrentQuestion = self.currentQuestion {
             
+            // Set question to be invisible
+            self.questionlabel.alpha = 0
+            self.moduleLabel.alpha = 0
+            
             // Update the question text
             self.questionlabel.text = self.currentQuestion?.questionText
             
+            
+            
             // Update the module and lesson label
             self.moduleLabel.text = String(format: "Module %i Lesson %i", self.currentQuestion!.module, self.currentQuestion!.lesson)
+            
+            // Reveal the question
+            UIView.animateWithDuration(1, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+                self.questionlabel.alpha = 1
+                self.moduleLabel.alpha = 1
+                
+                }, completion: nil)
             
             // Create and display the answer button views
             self.createAnswerButtons()
@@ -100,6 +117,9 @@ class ViewController: UIViewController {
             let answerText = self.currentQuestion!.answers[index]
             answer.setAnswerText(answerText)
             
+            // Set the answer number
+            answer.setAnswerNumber(index + 1)
+            
             // Add it to the button array
             self.answerButtonArray.append(answer)
         }
@@ -130,26 +150,70 @@ class ViewController: UIViewController {
                     // User got it correct
                     self.resultTitleLabel.text = "Correct"
                     
+                    // Change background color of result view and button
+                    self.resultView.backgroundColor = UIColor(red: 59/255, green: 85/255, blue: 60/255, alpha: 0.8)
+                    self.nextButton.backgroundColor = UIColor(red: 21/255, green: 68/255, blue: 24/255, alpha: 1)
+                    
+                    // Increment user score
+                    self.numberCorrect++
+                    
                 }
                 else {
                     
                     // User got it wrong
                     self.resultTitleLabel.text = "Incorrect"
                     
+                    // Change background color of result view and button
+                    self.resultView.backgroundColor = UIColor(red: 98/255, green: 29/255, blue: 37/255, alpha: 0.8)
+                    self.nextButton.backgroundColor = UIColor(red: 128/255, green: 21/255, blue: 26/255, alpha: 1)
+                    
                 }
                 
                 // Set the feedback text
                 self.feedbackLabel.text = self.currentQuestion!.feedback
                 
-                // Display the dimView and the resultView
-                self.dimView.alpha = 1
-                self.resultView.alpha = 1
+                // Set the button text to Next
+                self.nextButton.setTitle("Next", forState: UIControlState.Normal)
                 
+                // Set result view top margin constraint to some high number
+                self.resultViewTopMargin.constant = 900
+                self.view.layoutIfNeeded()
+                
+                // Display the dimView and the resultView
+                UIView.animateWithDuration(0.5, animations: {
+                    
+                    self.resultViewTopMargin.constant = 30
+                    self.view.layoutIfNeeded()
+                    
+                    // Fade into view
+                    self.dimView.alpha = 1
+                    self.resultView.alpha = 1
+                })
             }
         }
     }
 
     @IBAction func changeQuestion(sender: UIButton) {
+        
+        // Check if button text is Restart. If so, restart quiz
+        // Otherwise, try to advance to the next question
+        if self.nextButton.titleLabel?.text == "Restart" &&
+            self.questions.count > 0{
+                
+            // Reset question to the first question
+            self.currentQuestion = self.questions[0]
+                self.displayCurrentQuestion()
+                
+            // Remove dim and result view
+            self.dimView.alpha = 0
+            self.resultView.alpha = 0
+                
+            // Reset the score
+            self.numberCorrect = 0
+            
+            return
+        }
+        
         
         // Dismiss dim and result view
         self.dimView.alpha = 0
@@ -185,7 +249,14 @@ class ViewController: UIViewController {
             }
             else {
                 
-                // No more questions to display
+                // No more questions to display. End the quiz
+                self.resultTitleLabel.text = "Quiz Finished"
+                self.feedbackLabel.text = String(format: "Your Score: %i / %i", self.numberCorrect, self.questions.count)
+                self.nextButton.setTitle("Restart", forState: UIControlState.Normal)
+                
+                self.dimView.alpha = 1
+                self.resultView.alpha = 1
+                
             }
             
             
