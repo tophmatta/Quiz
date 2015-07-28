@@ -16,7 +16,7 @@ class QuizModel: NSObject {
         var questions:[Question] = [Question]()
         
         // Get JSON array of dictionaries
-        let jsonObjects:[NSDictionary] = self.getLocaLJsonFile()
+        let jsonObjects:[NSDictionary] = self.getRemoteJsonFile()
         
         // Loop through each dictionary and assign values to our question objects
         var index:Int
@@ -43,6 +43,33 @@ class QuizModel: NSObject {
         
         // Return list of question objects
         return questions
+    }
+    
+    func getRemoteJsonFile() -> [NSDictionary] {
+        
+        // Create a new URL
+        let remoteUrl:NSURL? = NSURL(string: "http://codewithchris.com/code/QuestionData.json")
+        
+        // Check if it's nil
+        if let actualRemoteUrl = remoteUrl {
+            
+            // Try to get the data
+            let fileData:NSData? = NSData(contentsOfURL: actualRemoteUrl)
+            
+            // Check if it's nil
+            if let actualFileData = fileData {
+                
+                // Parse out the dictionaries
+                let arrayOfDictionaries:[NSDictionary]? = NSJSONSerialization.JSONObjectWithData(actualFileData, options: NSJSONReadingOptions.MutableContainers, error: nil) as! [NSDictionary]?
+                
+                if let actualArrayOfDictionaries = arrayOfDictionaries {
+                    
+                    // Successfully parsed out array of dictionaries
+                    return actualArrayOfDictionaries
+                }
+            }
+        }
+        return [NSDictionary]()
     }
    
     func getLocaLJsonFile() -> [NSDictionary] {

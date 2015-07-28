@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		6D320F721B61BB4F00932963 /* AnswerButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D320F711B61BB4F00932963 /* AnswerButtonView.swift */; };
-		F126BA5B1B5D793100A82B76 /* QuestionData.json in Resources */ = {isa = PBXBuildFile; fileRef = F126BA5A1B5D793100A82B76 /* QuestionData.json */; };
 		F12A9D6D1B5D5E3200C540F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12A9D6C1B5D5E3200C540F0 /* AppDelegate.swift */; };
 		F12A9D6F1B5D5E3200C540F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12A9D6E1B5D5E3200C540F0 /* ViewController.swift */; };
 		F12A9D721B5D5E3200C540F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F12A9D701B5D5E3200C540F0 /* Main.storyboard */; };
@@ -31,7 +30,6 @@
 
 /* Begin PBXFileReference section */
 		6D320F711B61BB4F00932963 /* AnswerButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerButtonView.swift; sourceTree = "<group>"; };
-		F126BA5A1B5D793100A82B76 /* QuestionData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = QuestionData.json; sourceTree = "<group>"; };
 		F12A9D671B5D5E3200C540F0 /* Quiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F12A9D6B1B5D5E3200C540F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F12A9D6C1B5D5E3200C540F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -101,7 +99,6 @@
 		F12A9D6A1B5D5E3200C540F0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F126BA5A1B5D793100A82B76 /* QuestionData.json */,
 				F12A9D6B1B5D5E3200C540F0 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -207,7 +204,6 @@
 				F12A9D721B5D5E3200C540F0 /* Main.storyboard in Resources */,
 				F12A9D771B5D5E3200C540F0 /* LaunchScreen.xib in Resources */,
 				F12A9D741B5D5E3200C540F0 /* Images.xcassets in Resources */,
-				F126BA5B1B5D793100A82B76 /* QuestionData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
